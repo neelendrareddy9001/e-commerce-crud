@@ -20,10 +20,11 @@ const Cards = () => {
                 <Card.Body>
                   <Card.Title>Card Title</Card.Title>
                   <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
+                      Price : ₹ {element.price}
                   </Card.Text>
-                  <Button variant="primary">Go somewhere</Button>
+                  <div className='button_div d-flec justifyo-content-center'>
+                    <Button variant="primary" className='col-lg-12'>Add to Cart</Button>
+                  </div>
                 </Card.Body>
               </Card>
             </>
