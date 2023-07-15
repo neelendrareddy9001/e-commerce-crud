@@ -20,9 +20,9 @@ const CardDetails = () => {
                   <p><strong>Total</strong> : ₹ 300</p>
                 </td>
                 <td>
-                    <p><strong>Rating :</strong> <span style={{background:"green",color:"#fff",padding:"2px 5px",borderRadius:"5px"}}>{ele.rating} ★	</span></p>
-                    <p><strong>Order Review :</strong> <span >{ele.somedata}	</span></p>
-                    <p><strong>Remove :</strong> <span ><i className='fas fa-trash' onClick={()=>dlt(ele.id)} style={{color:"red",fontSize:20,cursor:"pointer"}}></i>	</span></p>
+                    <p><strong>Rating :</strong> <span style={{background:"green",color:"#fff",padding:"2px 5px",borderRadius:"5px"}}> ★	</span></p>
+                    <p><strong>Order Review :</strong> <span >	</span></p>
+                    <p><strong>Remove :</strong> <span ><i className='fas fa-trash'  style={{color:"red",fontSize:20,cursor:"pointer"}}></i>	</span></p>
                   </td>
               </tr>
             </Table>
