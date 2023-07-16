@@ -10,7 +10,7 @@ import {  useSelector } from 'react-redux';
 
 const Header = () => {
 
-  const getData = useSelector((state) => state.cartreducer);
+  const getData = useSelector((state) => state.cartreducer.carts);
   console.log(getData);
 
 
@@ -38,7 +38,7 @@ const Header = () => {
                  aria-haspopup="true"
                  aria-expanded={open ? 'true' : undefined}
                  onClick={handleClick}
-                badgeContent={4} color="primary"
+                badgeContent={getData.length} color="primary"
               >
                 <i className='fa-solid fa-cart-shopping text-light' style={{fontSize:25, cursor:'pointer'}}></i>
               </Badge>

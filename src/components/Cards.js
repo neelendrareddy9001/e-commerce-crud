@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import CardsData from './CardData';
 import "./styles.css";
 import { useDispatch } from 'react-redux';
+import {ADD} from '../redux/actions/Actions';
 
 
 const Cards = () => {
@@ -14,7 +15,9 @@ const Cards = () => {
 
 
   const send = (e) => {
-    console.log(e);
+    // console.log(e);
+
+    dispatch(ADD(e));
   }
 
   return (
@@ -27,7 +30,7 @@ const Cards = () => {
               <Card style={{ width: '18rem', border: "none" }} className='mx-2 mt-4 card_style'>
                 <Card.Img variant="top" src={element.imgdata} style={{height: "16rem"}} className='mt-3'/>
                 <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
+                  <Card.Title>{element.rname}</Card.Title>
                   <Card.Text>
                       Price : ₹ {element.price}
                   </Card.Text>
