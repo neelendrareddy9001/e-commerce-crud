@@ -63,6 +63,25 @@ const Header = () => {
                   <th>Restaurent Name</th>
                 </tr>
               </thead>
+              <tbody>
+                {
+                  getData.map((e) => {
+                    return(
+                      <>
+                        <tr>
+                          <td> 
+                            <img src={e.imgdata} alt=""  style={{width:"5rem", height:"5rem"}}/>
+                          </td>
+                          <td>
+                            <p>{e.rname}</p>
+                            <p>Price :  ₹{e.price}</p>
+                          </td>
+                        </tr>
+                      </>
+                    )
+                  })
+                }
+              </tbody>
             </Table>
           </div> :
 
