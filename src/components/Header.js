@@ -7,9 +7,14 @@ import NavLink from 'react-bootstrap/NavLink';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import  Badge from "@mui/material/Badge";
+import { UseSelector, useSelector } from 'react-redux';
 
 
 const Header = () => {
+
+  const getData = useSelector((state) => state.CartReducers.carts);
+  console.log(getData);
+
   const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -27,14 +32,14 @@ const Header = () => {
               <Nav.Link href="#home" className="text-decoration-none text-light">Home</Nav.Link>
             </Nav>
             <Badge 
-              badgeContent={4} color="primary"
+              badgeContent={getData.length} color="primary"
               id="basic-button"
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}
             >
-              <i class="fa-solid fa-cart-shopping text-light" style={{fontSize:25, cursor:"pointer"}} />
+              <i className="fa-solid fa-cart-shopping text-light" style={{fontSize:25, cursor:"pointer"}} />
             </Badge>
           </Container>
           <Menu
