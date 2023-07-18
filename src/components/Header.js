@@ -75,12 +75,20 @@ const Header = () => {
                           <td>
                             <p>{e.rname}</p>
                             <p>Price :  ₹{e.price}</p>
+                            <p>Quantity : {e.qnty}</p>
+                            <p style={{color:"red", fontSize:20,cursor:"pointer"}}>
+                              <i className="fas fa-trash"></i>
+                            </p>
+                          </td>
+                          <td className='mt-5'style={{color:"red",fontSize:20,cursor:"pointer"}} >
+                              <i className='fas fa-trash largetrash'></i>
                           </td>
                         </tr>
                       </>
                     )
                   })
                 }
+                <p className="text-center">Total : 300</p>
               </tbody>
             </Table>
           </div> :
