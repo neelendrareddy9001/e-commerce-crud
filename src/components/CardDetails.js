@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const CardDetails = () => {
+  const {id} = useParams();
+  // console.log(id);
+
+  const getData = useSelector((state) => state.cartReducer.carts);
+  // console.log(getData);
+
+  const compare = () => {
+    let compareData = getData.filter((e) => {
+      return e.id == id
+    });
+    console.log(compareData);
+  }
+
+  useEffect(() => {
+    compare();
+  },[id])
+
+
   return (
     <>
       <div className='container mt-2'>

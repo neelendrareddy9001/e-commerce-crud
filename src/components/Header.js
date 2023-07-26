@@ -3,11 +3,11 @@ import './styles.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import NavLink from 'react-bootstrap/NavLink';
+import {NavLink}  from "react-router-dom";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import  Badge from "@mui/material/Badge";
-import { UseSelector, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { Table } from "react-bootstrap";
 
 
@@ -70,14 +70,16 @@ const Header = () => {
                       <>
                         <tr>
                           <td> 
-                            <img src={e.imgdata} alt=""  style={{width:"5rem", height:"5rem"}}/>
+                          <NavLink to={`./cart/${e.id}`}>
+                              <img src={e.imgdata} style={{width:"5rem",height:"5rem"}} alt="" />
+                          </NavLink>
                           </td>
                           <td>
                             <p>{e.rname}</p>
                             <p>Price :  ₹{e.price}</p>
                             <p>Quantity : {e.qnty}</p>
                             <p style={{color:"red", fontSize:20,cursor:"pointer"}}>
-                              <i className="fas fa-trash"></i>
+                              <i className="fas fa-trash smalltrash"></i>
                             </p>
                           </td>
                           <td className='mt-5'style={{color:"red",fontSize:20,cursor:"pointer"}} >
