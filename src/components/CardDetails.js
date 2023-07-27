@@ -12,14 +12,14 @@ const CardDetails = () => {
 
   const compare = () => {
     let compareData = getData.filter((e) => {
-      return e.id == id
+      return e.id === id
     });
     console.log(compareData);
   }
 
   useEffect(() => {
     compare();
-  },[id])
+  })
 
 
   return (
@@ -28,7 +28,7 @@ const CardDetails = () => {
         <h2 className='text-center'>Items Details Page</h2>
         <div className='iteamsdetails'>
           <div className='items_img'>
-            <img className='mx-2' src='https://b.zmtcdn.com/data/pictures/3/18514413/0a17b72e9fec52a3ca736f4c2ea3646f_o2_featured_v2.jpg' />
+            <img className='mx-2' alt='image' src='https://b.zmtcdn.com/data/pictures/3/18514413/0a17b72e9fec52a3ca736f4c2ea3646f_o2_featured_v2.jpg' />
           </div>
           <div className='details'>
             <Table>
