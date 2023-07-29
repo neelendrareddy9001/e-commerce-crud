@@ -7,14 +7,15 @@ const CardDetails = () => {
   const {id} = useParams();
   // console.log(id);
 
-  const getData = useSelector((state) => state.cartReducer.carts);
+  const getData = useSelector((state) => state?.cartReducers?.carts);
   // console.log(getData);
 
   const compare = () => {
-    let compareData = getData.filter((e) => {
+    let compareData = getData?.filter((e) => {
+      console.log(e);
       return e.id === id
     });
-    console.log(compareData);
+    // console.log(compareData);
   }
 
   useEffect(() => {
@@ -27,8 +28,8 @@ const CardDetails = () => {
       <div className='container mt-2'>
         <h2 className='text-center'>Items Details Page</h2>
         <div className='iteamsdetails'>
-          <div className='items_img'>
-            <img className='mx-2' alt='image' src='https://b.zmtcdn.com/data/pictures/3/18514413/0a17b72e9fec52a3ca736f4c2ea3646f_o2_featured_v2.jpg' />
+          <div className='items_img' onClick={compare}>
+            <img className='mx-2' alt='Picture' src='https://b.zmtcdn.com/data/pictures/3/18514413/0a17b72e9fec52a3ca736f4c2ea3646f_o2_featured_v2.jpg' />
           </div>
           <div className='details'>
             <Table>
