@@ -1,13 +1,25 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { DLT } from '../redux/actions/Actions';
+import { useNavigate, useParams } from 'react-router-dom';
+
 
 const CardDetails = () => {
 
   const getCardData = useSelector(({CartReducers}) => CartReducers.SelectedCard);
   console.log(getCardData,"getCardData")
 
-  const {rname, price,imgdata, address, rating,somedata } = getCardData;
+  const history = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const dlt = (id) => {
+    dispatch(DLT(id));
+    history("/");
+  }
+
+  const {id,rname, price,imgdata, address, rating,somedata } = getCardData;
 
 
 
@@ -30,7 +42,7 @@ const CardDetails = () => {
                 <td>
                     <p><strong>Rating :</strong>{rating} <span style={{background:"green",color:"#fff",padding:"2px 5px",borderRadius:"5px"}}> ★	</span></p>
                     <p><strong>Order Review :</strong><span >{somedata}	</span></p>
-                    <p><strong>Remove :</strong> <span ><i className='fas fa-trash'  style={{color:"red",fontSize:20,cursor:"pointer"}}></i>	</span></p>
+                    <p><strong>Remove :</strong> <span ><i className='fas fa-trash'  style={{color:"red",fontSize:20,cursor:"pointer"}} onClick={() => dlt(id)}></i>	</span></p>
                   </td>
               </tr>
             </Table>
