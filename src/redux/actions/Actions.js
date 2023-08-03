@@ -4,6 +4,14 @@ export const ADD = (item) => {
         payload: item
     }
 }
+
+export const DLT = (id) => {
+    return {
+        type : "DLT_CART",
+        payload : id
+    }
+}
+
 export const IMG_CLICK = (id) => {
     return {
         type: "IMG_CLICK",

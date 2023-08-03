@@ -10,6 +10,12 @@ export const CartReducers = (state = INIT_STATE, action) => {
                 ...state,
                 carts:[...state?.carts,action.payload]
             }
+        case "DLT_CART" :
+            const data = state.carts.filter((ele) => ele.id !== action.payload);
+            return {
+                ...state,
+                carts : data
+            }
         case "IMG_CLICK" : 
             return {
                 ...state,

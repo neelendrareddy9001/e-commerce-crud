@@ -10,13 +10,14 @@ import  Badge from "@mui/material/Badge";
 import {  useDispatch, useSelector } from 'react-redux';
 import { Table } from "react-bootstrap";
 import { IMG_CLICK } from "../redux/actions/Actions";
+import { DLT } from "../redux/actions/Actions";
 
 
 const Header = () => {
 
   const getData = useSelector((state) => state.CartReducers.carts);
   const [totalPrice, setTotalPrice] = useState(0);
-  console.log(getData);
+  // console.log(getData);
 
   const dispatch = useDispatch();
 
@@ -36,6 +37,11 @@ useEffect(()=>{
     const handleImgUpdate = (id) =>{
       dispatch(IMG_CLICK(id))
     }
+
+    const dlt = (id) => {
+      dispatch(DLT(id))
+    }
+
   return (
     <>
         <Navbar bg="dark" variant="dark" style={{height: "60px"}}>
@@ -89,11 +95,11 @@ useEffect(()=>{
                             <p>{e?.rname}</p>
                             <p>Price :  ₹{e?.price}</p>
                             <p>Quantity : {e?.qnty}</p>
-                            <p style={{color:"red", fontSize:20,cursor:"pointer"}}>
+                            <p style={{color:"red", fontSize:20,cursor:"pointer"}} onClick={() => dlt(e.id)}>
                               <i className="fas fa-trash smalltrash"></i>
                             </p>
                           </td>
-                          <td className='mt-5'style={{color:"red",fontSize:20,cursor:"pointer"}} >
+                          <td className='mt-5'style={{color:"red",fontSize:20,cursor:"pointer"}} onClick={() => dlt(e.id)}>
                               <i className='fas fa-trash largetrash'></i>
                           </td>
                         </tr>
