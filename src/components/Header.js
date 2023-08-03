@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import './styles.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
@@ -7,14 +7,23 @@ import {NavLink}  from "react-router-dom";
 import Menu from '@mui/material/Menu';
 // import MenuItem from '@mui/material/MenuItem';
 import  Badge from "@mui/material/Badge";
-import {  useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { Table } from "react-bootstrap";
+import { IMG_CLICK } from "../redux/actions/Actions";
 
 
 const Header = () => {
 
   const getData = useSelector((state) => state.CartReducers.carts);
+  const [totalPrice, setTotalPrice] = useState(0);
   console.log(getData);
+
+  const dispatch = useDispatch();
+
+useEffect(()=>{
+ let getTotalPrice = getData.map(item => item.price).reduce((acc,cur) => acc+cur,0);
+ setTotalPrice(getTotalPrice)
+},[getData])
 
   const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -24,6 +33,9 @@ const Header = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const handleImgUpdate = (id) =>{
+      dispatch(IMG_CLICK(id))
+    }
   return (
     <>
         <Navbar bg="dark" variant="dark" style={{height: "60px"}}>
@@ -67,11 +79,10 @@ const Header = () => {
                 {
                   getData.map((e) => {
                     return(
-                      <>
-                        <tr>
+                        <tr key={e.id}>
                           <td> 
                           <NavLink to={`./cart/${e.id}`}>
-                              <img src={e?.imgdata} style={{width:"5rem",height:"5rem"}} alt="" />
+                              <img src={e?.imgdata} style={{width:"5rem",height:"5rem"}} alt="" onClick={() => handleImgUpdate(e.id)}/>
                           </NavLink>
                           </td>
                           <td>
@@ -86,13 +97,12 @@ const Header = () => {
                               <i className='fas fa-trash largetrash'></i>
                           </td>
                         </tr>
-                      </>
                     )
                   })
                 }
-                <p className="text-center">Total : 300</p>
               </tbody>
             </Table>
+                <p className="text-center">Total : {totalPrice}</p>
           </div> :
 
           <div className="card_details d-flex justify-content-center align-items-center" style={{width:"24rem", padding:10, position:"relative"}}>

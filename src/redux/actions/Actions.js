@@ -4,3 +4,9 @@ export const ADD = (item) => {
         payload: item
     }
 }
+export const IMG_CLICK = (id) => {
+    return {
+        type: "IMG_CLICK",
+        payload: id
+    }
+}
