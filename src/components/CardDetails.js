@@ -1,7 +1,8 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import { useSelector, useDispatch } from 'react-redux';
-import { DLT } from '../redux/actions/Actions';
+import { DLT, ADD } from '../redux/actions/Actions';
+
 import { useNavigate, useParams } from 'react-router-dom';
 
 
@@ -19,7 +20,12 @@ const CardDetails = () => {
     history("/");
   }
 
-  const {id,rname, price,imgdata, address, rating,somedata } = getCardData;
+
+  const send = (e) => {
+    dispatch(ADD(e));
+  }
+
+  const {id,rname, price,imgdata, address, rating,somedata, qnty } = getCardData;
 
 
 
@@ -38,6 +44,12 @@ const CardDetails = () => {
                   <p><strong>Restaurent</strong> : {rname}</p>
                   <p><strong>Price</strong> : ₹ {price}</p>
                   <p><strong>Dishes</strong> : {address}</p>
+                  <p><strong>Total</strong> :₹ 300</p>
+                  <div className='mt-5 d-flex justify-content-between align-items-center' style={{width: 100, cursor : "pointer", background : "#ddd", color: "#111"}} >
+                    <span style={{fontSize : 22}} onClick={() => send(getCardData.qnty <=1)}>-</span>
+                    <span style={{fontSize : 24}}>{qnty}</span>
+                    <span style={{fontSize : 22}} onClick={() => send(getCardData)}>+</span>
+                  </div>
                 </td>
                 <td>
                     <p><strong>Rating :</strong>{rating} <span style={{background:"green",color:"#fff",padding:"2px 5px",borderRadius:"5px"}}> ★	</span></p>
